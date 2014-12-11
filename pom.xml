@@ -639,6 +639,16 @@
                         <groupId>org.apache.jmeter</groupId>
                         <artifactId>ApacheJMeter_core</artifactId>
                     </exclusion>
+                    
+                    <!-- MB Exclusions -->
+                    <exclusion>
+                        <groupId>org.apache.ftpserver</groupId>
+                        <artifactId>ftpserver-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.activemq</groupId>
+                        <artifactId>activemq-all</artifactId>
+                    </exclusion>
                 </exclusions>
                 <scope>test</scope>
             </dependency>
@@ -754,6 +764,7 @@
                         </exclusion>
                     </exclusions>
                 </dependency>
+
         </dependencies>
     </dependencyManagement>
     <properties>
@@ -801,6 +812,16 @@
         <selenium.version>2.40.0</selenium.version>
         <slf4j.version>1.7.5</slf4j.version>
         <activemq.version>5.9.1</activemq.version>
+        
+        <!-- MB Properties -->
+        <product.mb.version>3.0.0-SNAPSHOT</product.mb.version>
+        <slf4j.wso2.version>1.5.10.wso2v1</slf4j.wso2.version>
+        <orbit.version.geronimo-jms_1.1_spec>1.1.0.wso2v1</orbit.version.geronimo-jms_1.1_spec>
+        <jline.version>1.0</jline.version>
+        
+        <!-- AS Properties -->
+        <jaggery.version>0.9.0-SNAPSHOT</jaggery.version>
+        <product.as.version>6.0.0-SNAPSHOT</product.as.version>
     </properties>
     <pluginRepositories>
         <pluginRepository>
