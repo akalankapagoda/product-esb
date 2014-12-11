@@ -21,6 +21,7 @@
         <format>zip</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
+    
     <fileSets>
         <fileSet>
             <directory>target/wso2carbon-core-${carbon.kernel.version}</directory>
@@ -210,7 +211,72 @@
             <directory>lib/home</directory>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps/STRATOS_ROOT</outputDirectory>
         </fileSet>
+        
+        <!-- MB Filesets -->
+        
+        <fileSet>
+            <directory>
+                ../p2-profile/target/wso2carbon-core-${carbon.platform.version}/repository/conf/
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf
+            </outputDirectory>
+            <includes>
+                <include>**/broker.xml</include>
+            </includes>
+        </fileSet>
+        
+        <fileSet>
+            <directory>
+                ../p2-profile/target/wso2carbon-core-${carbon.platform.version}/repository/conf/advanced/
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/advanced</outputDirectory>
+        	    <includes>
+    	            <include>**/qpid-config.xml</include>
+	                <include>**/qpid-virtualhosts.xml</include>
+                	<include>**/qpid-jmxremote.access</include>
+            	</includes>
+        	</fileSet>
+
+        <!-- MB SQL scripts -->
+        <fileSet>
+            <directory>../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/dbscripts/mb-store
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/dbscripts/mb-store</outputDirectory>
+            <includes>
+                <include>**/*.*</include>
+            </includes>
+        </fileSet>
+        <!-- End - MB SQL scripts -->
+    
+    	<!-- AS Filesets -->
+    
+        <fileSet>
+            <directory>
+                ../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/etc/
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc</outputDirectory>
+            <includes>
+                <include>**/bam.xml</include>
+            </includes>
+        </fileSet>
+        
+        <fileSet>
+            <directory>
+                ../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf</outputDirectory>
+            <includes>
+	        <include>**/identity.xml</include>
+            </includes>
+	    	<excludes>
+                <exclude>**/catalina-server.xml</exclude>
+				<!-- Changes related to Carbon kernel 4.2.0 patches -->
+				<exclude>**/axis2/*</exclude>
+				<!-- End - Changes related to Carbon kernel 4.2.0 patches -->
+            </excludes>
+        </fileSet>
     </fileSets>
+    
     <dependencySets>
         <!-- use the new tool to create a bundles -->
         <dependencySet>
@@ -248,6 +314,15 @@
             <outputDirectory>wso2esb-${pom.version}/repository/deployment/client/modules</outputDirectory>
             <includes>
                 <include>org.apache.rampart:rampart:mar</include>
+            </includes>
+        </dependencySet>
+        
+    <!-- MB Client Libraries -->
+        <dependencySet>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/lib</outputDirectory>
+            <includes>
+                <include>org.wso2.andes.wso2:andes-client:jar</include>
+                <include>org.apache.geronimo.specs.wso2:geronimo-jms_1.1_spec:jar</include>
             </includes>
         </dependencySet>
     </dependencySets>
@@ -420,6 +495,41 @@
 	<file>
             <source>../../modules/distribution/src/main/conf/etc/tasks-config.xml</source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc</outputDirectory>
+        </file>
+        
+        <!-- MB Files -->
+        
+        <file>
+            <source>src/main/conf/master-datasources.xml</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/datasources/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        
+        <file>
+            <source>src/main/resources/WSO2MB_DB.h2.db</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/database/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        
+        <file>
+            <source>src/main/resources/cassandra-env.sh</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>755</fileMode>
+        </file>
+        
+        <!-- AS Files -->
+        
+        <file>
+            <source>../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/security/application-authentication.xml</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/security</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        
+		<file>
+            <source>../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/identity-providers/default.xml</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/identity/identity-providers</outputDirectory>
+            <fileMode>644</fileMode>
         </file>
     </files>
 </assembly>
