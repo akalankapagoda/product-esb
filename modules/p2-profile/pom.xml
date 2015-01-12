@@ -452,6 +452,13 @@
                                 <featureArtifactDef>
                                     org.wso2.appserver:org.wso2.stratos.appserver.dashboard.ui.feature:${product.as.version}
                                 </featureArtifactDef>
+                                
+                                <!-- DSS Features -->
+                                
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dataservices.feature:${carbon.platform.version}</featureArtifactDef>
+								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dataservices.task.feature:${carbon.platform.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.carbon:org.wso2.carbon.dbconsole.ui.feature:${carbon.platform.version}</featureArtifactDef>
+								<featureArtifactDef>org.wso2.carbon:org.wso2.carbon.jsscraper.feature:${previous.version}</featureArtifactDef>
 
                             </featureArtifacts>
                         </configuration>
@@ -1009,6 +1016,28 @@
                                 <feature>
                                     <id>org.wso2.stratos.appserver.dashboard.ui.feature.group</id>
                                     <version>${product.as.version}</version>
+                                </feature>
+                                
+                                <!-- DSS Features -->
+                                
+				                <feature>
+                                    <id>org.wso2.carbon.dataservices.task.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+                                
+                                <feature>
+                                    <id>org.wso2.carbon.dataservices.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+                                
+				                <feature>
+                                    <id>org.wso2.carbon.dbconsole.ui.feature.group</id>
+                                    <version>${carbon.platform.version}</version>
+                                </feature>
+                                
+				                <feature>
+                                    <id>org.wso2.carbon.jsscraper.feature.group</id>
+                                    <version>${previous.version}</version>
                                 </feature>
 
                             </features>
